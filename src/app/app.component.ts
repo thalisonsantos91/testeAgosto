@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { TopoComponent } from './Topo/topo.component';
+import { PainelComponent } from './painel/painel.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  imports: [
+    TopoComponent,
+    PainelComponent
+  ]
 })
 export class AppComponent {
   title = 'testeAgosto';
