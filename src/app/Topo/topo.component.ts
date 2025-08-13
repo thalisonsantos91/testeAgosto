@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './topo.component.scss'
 })
 export class TopoComponent {
-
+   public titulo: string = 'Aprendendo Inglês';
 }

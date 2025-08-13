@@ -7,4 +7,6 @@ import { Component, Input } from '@angular/core';
   standalone: true
 })
 export class TentativasComponent {
+  public coracaoVazio = '/coracao_vazio.png';
+  public coracaoCheio = '/coracao_cheio.png';
 }
