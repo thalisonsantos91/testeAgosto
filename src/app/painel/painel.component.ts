@@ -19,7 +19,7 @@ export class PainelComponent {
   public rodada: number = 0
   public rodadaFrase: Frase = this.frases[this.rodada]
 
-  constructor() { 
+  constructor() {
     this.rodadaFrase = this.frases[this.rodada]
     console.log(this.rodadaFrase)
    }
@@ -30,15 +30,14 @@ export class PainelComponent {
 
   public verificarResposta(): void {
 
-    this.rodada++
-    this.rodadaFrase = this.frases[this.rodada] 
-    console.log(this.rodadaFrase)
-
-    if (this.resposta === this.frases[0].frasePtBr) {
-      alert('A tradução está correta!')
-    } else {
-      alert('A tradução está incorreta!')
+    if (this.resposta == this.rodadaFrase.frasePtBr) {
+      this.rodada++
+      this.rodadaFrase = this.frases[this.rodada]
+      alert('A resposta está correta!')
+    }else{
+      alert('A resposta está incorreta!')
     }
-    this.resposta = ''
+
+    //this.resposta = ''
   }
 }
