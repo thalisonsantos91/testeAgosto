@@ -3,7 +3,7 @@
     <div class="p-5 mb-4 rounded-3" id="painel">
         <div class="row">
             <div class="col-sm-6">
-                <app-progresso></app-progresso>
+                <app-progresso [progresso]="progresso"></app-progresso>
             </div>
             <div class="col-sm-6">
                 <div class="d-flex justify-content-end">
@@ -21,7 +21,8 @@
                     <textarea 
                         rows="3" 
                         class="form-control"
-                        (input)="AtualizarResposta($event)"
+                        (input)="atualizarResposta($event)"
+                        [value]="resposta"
                     ></textarea>
                 </div>                
             </div>

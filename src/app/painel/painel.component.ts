@@ -19,12 +19,13 @@ export class PainelComponent {
   public rodada: number = 0
   public rodadaFrase: Frase = this.frases[this.rodada]
 
+  public progresso: number = 0
+
   constructor() {
-    this.rodadaFrase = this.frases[this.rodada]
-    console.log(this.rodadaFrase)
+    this.atualizaRodada()
    }
 
-  public AtualizarResposta(resposta: Event): void {
+  public atualizarResposta(resposta: Event): void {
     this.resposta = (<HTMLInputElement>resposta.target).value
   }
 
@@ -32,12 +33,16 @@ export class PainelComponent {
 
     if (this.resposta == this.rodadaFrase.frasePtBr) {
       this.rodada++
-      this.rodadaFrase = this.frases[this.rodada]
-      alert('A resposta está correta!')
+      this.progresso = this.progresso + (100 / this.frases.length)
+      this.atualizaRodada()      
+      //alert('A resposta está correta!')
     }else{
       alert('A resposta está incorreta!')
-    }
+    }    
+  }
 
-    //this.resposta = ''
+  public atualizaRodada(): void {
+    this.rodadaFrase = this.frases[this.rodada]
+    this.resposta = ''
   }
 }

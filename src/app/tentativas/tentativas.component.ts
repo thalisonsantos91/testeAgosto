@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Coracao } from '../shared/coracao.model';
 
 @Component({
   selector: 'app-tentativas',
@@ -7,6 +8,17 @@ import { Component, Input } from '@angular/core';
   standalone: true
 })
 export class TentativasComponent {
-  public coracaoVazio = '/coracao_vazio.png';
-  public coracaoCheio = '/coracao_cheio.png';
+
+  
+  public coracoes: Coracao[] = [
+    new Coracao(true),  
+    new Coracao(true),
+    new Coracao(true),
+  ]
+  
+  constructor() {
+    console.log(this.coracoes);
+  }
+  
+  ngOnInit(){}
 }
