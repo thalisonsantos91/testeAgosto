@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { TentativasComponent } from '../tentativas/tentativas.component';
 import { ProgressoComponent } from '../progresso/progresso.component';
 import { Frase } from '../shared/frase.model';
@@ -21,6 +21,10 @@ export class PainelComponent {
 
   public progresso: number = 0
 
+  public tentativas: number = 3
+
+  @Output() public encerrarJogo: EventEmitter<string> = new EventEmitter()
+
   constructor() {
     this.atualizaRodada()
    }
@@ -30,14 +34,32 @@ export class PainelComponent {
   }
 
   public verificarResposta(): void {
-
-    if (this.resposta == this.rodadaFrase.frasePtBr) {
+    
+    if (this.resposta.trim() == this.rodadaFrase.frasePtBr) {
       this.rodada++
       this.progresso = this.progresso + (100 / this.frases.length)
-      this.atualizaRodada()      
-      //alert('A resposta está correta!')
+
+      if(this.rodada === 4){
+        this.encerrarJogo.emit('vitoria')
+        this.rodada = 0
+        this.tentativas = 4
+        this.progresso = 0
+        this.rodadaFrase = this.frases[this.rodada]
+        this.resposta = ''
+      }
+
+      this.atualizaRodada()
+
     }else{
-      alert('A resposta está incorreta!')
+      this.tentativas--
+      
+      if(this.tentativas === -1){
+        this.encerrarJogo.emit('derrota')
+        this.rodada = 0
+        this.tentativas = 4
+        this.progresso = 0
+        this.atualizaRodada()
+      }
     }    
   }
 

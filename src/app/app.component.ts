@@ -12,5 +12,9 @@ import { PainelComponent } from './painel/painel.component';
   ]
 })
 export class AppComponent {
-  title = 'testeAgosto';
+
+  public encerrarJogo(tipo: string): void {
+    console.log(tipo);
+  }
+  
 }
