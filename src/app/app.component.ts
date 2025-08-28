@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { TopoComponent } from './Topo/topo.component';
 import { PainelComponent } from './painel/painel.component';
 
@@ -8,13 +9,22 @@ import { PainelComponent } from './painel/painel.component';
   styleUrl: './app.component.scss',
   imports: [
     TopoComponent,
-    PainelComponent
+    PainelComponent,
+    CommonModule
   ]
 })
 export class AppComponent {
 
+  public jogoEmAndamento: boolean = true
+  public tipoEncerramento: string = ''
+
   public encerrarJogo(tipo: string): void {
-    console.log(tipo);
+    this.jogoEmAndamento = false
+    this.tipoEncerramento = tipo
   }
-  
+
+  public reiniciarJogo(): void {
+    this.jogoEmAndamento = true
+    this.tipoEncerramento = ''
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnDestroy, OnInit } from '@angular/core';
 import { TentativasComponent } from '../tentativas/tentativas.component';
 import { ProgressoComponent } from '../progresso/progresso.component';
 import { Frase } from '../shared/frase.model';
@@ -11,7 +11,7 @@ import { Frases } from './frases-mock';
   styleUrl: './painel.component.scss',
   standalone: true
 })
-export class PainelComponent {
+export class PainelComponent implements OnDestroy {
 
   public frases: Frase[] = Frases
   public instrucao: string = 'Traduza a frase:'
@@ -28,6 +28,10 @@ export class PainelComponent {
   constructor() {
     this.atualizaRodada()
    }
+
+  ngOnDestroy()  {
+    console.log('Componente painel foi destruído!');
+  }
 
   public atualizarResposta(resposta: Event): void {
     this.resposta = (<HTMLInputElement>resposta.target).value
